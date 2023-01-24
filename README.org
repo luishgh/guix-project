@@ -1,0 +1,40 @@
+#+TITLE:  guix-project
+
+Guix subcommand for managing projects
+
+* What's a Guix project?
+
+A Guix project is a folder that contains, at least, a =channels.scm= file and either =manifest.scm= or =guix.scm= on its root. It can also contain additional guile modules for Guix, expected by default to be inside =guix/=, a =channels-lock.scm= for reproducibility, and a =.git= folder for version management and additional reproducibility.
+
+** Use cases
+
+Guix projects can be used to:
+
+- manage development environments with the appropriate dependencies installed
+- build and test software on a reproducible fashion
+- customize and/or extend Guix through the [[info:guix#Channels][channels]] facility
+
+* TODO Installation
+
+* Usage
+
+#+begin_src shell
+Usage: guix project COMMAND [OPTION]...
+Management facilities for Guix projects.
+
+Available commands:
+
+    update [PATH]         update channels lock file
+    init   [PATH]         create new project
+    lock   [PATH]         create lock file for existing project
+    shell  [PATH]         run `guix shell` inside project
+    build  [PATH]         build the project's guix.scm
+
+  -h, --help             display this help and exit
+#+end_src
+
+* Disclaimers
+
+** Non-objectives
+
+- ~guix project~ won't provide interactive management of channels nor packages, as is believed that editing the respective files manually, especially if done inside an adequate editor, is already straightforward due to the editing ease lisp provides.
